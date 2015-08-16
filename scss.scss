@@ -56,3 +56,10 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+@mixin placeholder($el: input) {
+  $a: '::-moz-' '::-webkit-input-' ':-ms-input-';
+  @each $b in $a {
+    #{$el}#{unquote($b + 'placeholder')} { @content }
+  }
+}
