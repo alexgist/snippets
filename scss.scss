@@ -64,3 +64,48 @@
     #{$el}#{unquote($b + 'placeholder')} { @content }
   }
 }
+
+/**
+under construction
+
+<input type="checkbox">
+<label><span></span> any string </label>
+
+<input type="radio">
+<label><span></span> any string </label>
+**/
+@mixin checkIt($selector, $size, $background, $color, $borderColor, $borderRadius, $symbol){
+  #{unquote($selector)} {
+    display: none;
+    & + label {
+      cursor: pointer;
+      span {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        border: $borderColor 1px solid;
+        border-radius: $borderRadius;
+        background: $background;
+        width: 16px; height: 16px;
+        -webkit-transform: scale($size); -ms-transform: scale($size); transform: scale($size);
+      }
+    }
+    &:checked + label span:before {
+      content: $symbol;
+      position: absolute;
+      top: 0; left: 0;
+      color: $color;
+      font-size: 36px;
+      text-align: center;
+      line-height: 1;
+      box-sizing: border-box;
+    }
+  }
+}
+@mixin checkbox($selector: 'input[type="checkbox"]', $size: 1, $background: #fff, $color: #000, $borderColor: #000, $borderRadius: 0) {
+  @include checkIt($selector, $size, $background, $color, $borderColor, $borderRadius, '✓');
+}
+@mixin radio($selector: 'input[type="radio"]', $size: 1, $background: #fff, $color: #000, $borderColor: #000) {
+  @include checkIt($selector, $size, $background, $color, $borderColor, 50%, '∙');
+}
+
