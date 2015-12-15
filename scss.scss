@@ -65,6 +65,13 @@
   }
 }
 
+@mixin columns($count: auto, $width: auto, $gap: '', $fill: '', $rule: '') {
+  -moz-columns: $count $width; -webkit-columns: $count $width; columns: $count $width;
+  @if $gap != '' { -moz-column-gap: $gap; -webkit-column-gap: $gap; column-gap: $gap; }
+  @if $rule != '' { -moz-column-rule: $rule; -webkit-column-rule: $rule; column-rule: $rule; }
+  @if $fill != '' { -moz-column-fill: $fill; column-fill: $fill; }
+}
+
 /**
 under construction
 
