@@ -14,3 +14,13 @@ function setUserAgent(w, userAgent) {
     }
 }
 setUserAgent(document.querySelector('iframe').contentWindow, 'A User Agent String');
+
+var getAbsoluteUrl = (function() {
+    var a;
+    return function(url) {
+        if(!a) a = document.createElement('a');
+        a.href = url;
+        return a.href;
+    };
+})();
+getAbsoluteUrl('/something');
