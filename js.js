@@ -28,3 +28,10 @@ function getFromCSS() {
         '::after'
     ).content.replace(/\'/g, '').replace(/\"/g, '');
 }
+
+// not blocked popup
+//<a id="aaa" href="...">link</a>
+$('#aaa').on('click', function (e) {
+    e.preventDefault();
+    window.open($(this).attr('href'), 'new_window', 'status=0');
+});
