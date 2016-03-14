@@ -21,3 +21,10 @@ function getAbsoluteUrl(url) {
     return a.href;
 }
 getAbsoluteUrl('/something');
+
+function getFromCSS() {
+    return +window.getComputedStyle(
+        document.querySelector('body'),
+        '::after'
+    ).content.replace(/\'/g, '').replace(/\"/g, '');
+}
